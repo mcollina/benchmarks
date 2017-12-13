@@ -18,7 +18,7 @@ const schema = {
 }
 
 fastify.get('/', schema, function (req, reply) {
-  reply.send({ hello: 'world' })
+  setTimeout(() => reply.send({ hello: 'world' }), 10)
 })
 
 fastify.listen(3000)

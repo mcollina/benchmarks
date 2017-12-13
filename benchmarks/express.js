@@ -8,7 +8,7 @@ app.disable('etag')
 app.disable('x-powered-by')
 
 app.get('/', function (req, res) {
-  res.json({ hello: 'world' })
+  setTimeout(() => res.json({ hello: 'world' }), 10)
 })
 
 app.listen(3000)

@@ -4,7 +4,7 @@ const restify = require('restify')
 
 const server = restify.createServer()
 server.get('/', function (req, res) {
-  res.send({ hello: 'world' })
+  setTimeout(() => res.send({ hello: 'world' }), 10)
 })
 
 server.listen(3000)

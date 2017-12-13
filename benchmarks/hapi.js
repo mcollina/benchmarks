@@ -1,7 +1,5 @@
 'use strict'
 
-require('make-promises-safe')
-
 const Hapi = require('hapi')
 
 async function start () {
@@ -17,7 +15,8 @@ async function start () {
       },
       state: { parse: false }
     },
-    handler: function (request, h) {
+    handler: async function (request, h) {
+      await new Promise((resolve) => setTimeout(resolve, 10))
       return { hello: 'world' }
     }
   })
