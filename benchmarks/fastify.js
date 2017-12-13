@@ -1,6 +1,7 @@
 'use strict'
 
 const fastify = require('fastify')()
+const Penseur = require('penseur');
 
 const schema = {
   schema: {
@@ -10,6 +11,9 @@ const schema = {
         properties: {
           hello: {
             type: 'string'
+          },
+          id: {
+            type: 'number'
           }
         }
       }
@@ -17,8 +21,18 @@ const schema = {
   }
 }
 
+let db;
+
 fastify.get('/', schema, function (req, reply) {
-  reply.send({ hello: 'world' })
+  db.test.get(1).then((result) => reply.send(result))
 })
 
-fastify.listen(3000)
+async function init() {
+  db = new Penseur.Db('benchtest');
+  await db.establish(['test']);
+  await db.test.insert([{ id: 1, hello: 'world' }]);
+  fastify.listen(3000)
+}
+
+init()
+
