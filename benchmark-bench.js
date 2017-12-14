@@ -13,23 +13,31 @@ function select (callback) {
       choices: [
         new inquirer.Separator(' = The usual ='),
         {
+          name: 'bare',
+          checked: true
+        },
+        {
           name: 'fastify',
           checked: true
         },
         {
-          name: 'express'
+          name: 'express',
+          checked: true
         },
         {
-          name: 'koa'
+          name: 'koa',
+          checked: true
         },
         {
-          name: 'hapi'
+          name: 'hapi',
+          checked: true
         },
         {
           name: 'connect'
         },
         {
-          name: 'restify'
+          name: 'restify',
+          checked: true
         },
         {
           name: 'take-five'
@@ -88,9 +96,9 @@ inquirer.prompt([
   },
   {
     type: 'input',
-    name: 'connection',
-    message: 'How many connection you need?',
-    default: 100,
+    name: 'connections',
+    message: 'How many connections you need?',
+    default: 500,
     validate (value) {
       return !Number.isNaN(parseFloat(value)) || 'Please enter a number'
     },
@@ -110,7 +118,7 @@ inquirer.prompt([
     type: 'input',
     name: 'duration',
     message: 'How long does it takes?',
-    default: 5,
+    default: 40,
     validate (value) {
       return !Number.isNaN(parseFloat(value)) || 'Please enter a number'
     },

@@ -4,9 +4,11 @@ const Koa = require('koa')
 
 const app = new Koa()
 
-app.use(async function (ctx) {
-  await new Promise((resolve) => setTimeout(resolve, 10))
-  ctx.body = { hello: 'world' }
+app.use(function (ctx) {
+  return new Promise((resolve) => setTimeout(() => {
+    ctx.body = { hello: 'world' }
+    resolve()
+  }, 10))
 })
 
 app.listen(3000)
