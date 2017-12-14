@@ -16,7 +16,7 @@ async function start () {
       state: { parse: false }
     },
     handler: function (request, h) {
-      return new Promise((resolve) => setTimeout(resolve({ hello: 'world' }), 10))
+      return new Promise((resolve) => setTimeout(resolve, 10, { hello: 'world' })))
     }
   })
 
