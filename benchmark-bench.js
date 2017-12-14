@@ -9,7 +9,7 @@ async function run() {
     for (let i = 0; i < intervals.length; ++i) {
         const options = {
             connections: intervals[i],
-            duration: 5,
+            duration: 40,
             pipelining: 10
         };
 
